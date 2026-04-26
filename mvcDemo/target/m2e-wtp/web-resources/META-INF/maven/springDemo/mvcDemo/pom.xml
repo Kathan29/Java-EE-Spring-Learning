@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>springDemo</groupId>
+  <artifactId>mvcDemo</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+   </properties>
+  
+  <dependencies>
+    <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+  <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>6.2.7</version>
+  </dependency>
+  
+  <!-- Servlet API -->
+    <dependency>
+        <groupId>jakarta.servlet</groupId>
+        <artifactId>jakarta.servlet-api</artifactId>
+        <version>6.0.0</version>
+        <scope>provided</scope>
+    </dependency>
+    
+    <!--  JSTL 3.0 dependencies. Needed for Tomcat 10.1.x or newer. Using default Maven scope of compile as Tomcat doesn't provide it out the box!  -->
+
+<!--  Reference: https://stackoverflow.com/questions/4928271/how-to-install-jstl-it-fails-with-the-absolute-uri-cannot-be-resolved-or-una/4928309#4928309  -->
+
+	<dependency>
+	
+	<groupId>jakarta.servlet.jsp.jstl</groupId>
+	
+	<artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+	
+	<version>3.0.0</version>
+	
+	</dependency>
+	
+	<dependency>
+	
+	<groupId>org.glassfish.web</groupId>
+	
+	<artifactId>jakarta.servlet.jsp.jstl</artifactId>
+	
+	<version>3.0.1</version>
+	
+	</dependency>
+    
+  </dependencies>
+</project>
