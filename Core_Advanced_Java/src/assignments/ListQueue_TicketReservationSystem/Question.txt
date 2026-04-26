@@ -1,0 +1,24 @@
+Flight Reservation System ~ Putting Lists & Queues into Action!
+In this exercise we will put ArrayList, Iterator and ArrayDeque into action. Do read the problem description carefully and it should be a simple exercise. We implement a simple flight reservation logic that provides two features: (a) booking a flight, (b) canceling a flight. Just assume that we are dealing with only a single flight here. Two classes are provided with the exercise: (ii) TicketReservation and (ii) Passenger. You would only implement TicketReservation class. Code for Passenger class is provided in full and so you don't have to make any changes to it. You would only use it from TicketReservation class to create Passenger objects. 
+
+Below is the template for TicketReservation. Method bookFlight() simulates booking a flight for a given passenger while the method cancel() simulates flight cancellation of a given passenger. Below are four instance variables used in the class, which are followed by a description of the methods. 
+
+int CONFIRMEDLIST_LIMIT = 10; 
+
+int WAITINGLIST_LIMIT = 3; 
+
+Collection<Passenger> confirmedList = new ArrayList<>(); 
+
+Deque<Passenger> waitingList = new ArrayDeque<>();
+
+(i) bookFlight(String firstName, String lastName, int age, String gender, String travelClass, String confirmationNumber):
+
+bookFlight would take passenger details and would create a Passenger object and would add it to the instance variable confirmedList, which is an ArrayList. However, since a flight can accommodate only limited number of passengers, we ensure that confirmedList can accommodate only 10 passengers, which is indicated by the variable CONFIRMEDLIST_LIMIT. We also maintain a waiting list represented by the instance variable waitingList, which is an ArrayDeque (queue!). Once confirmedList reaches CONFIRMEDLIST_LIMIT, we should add any new passengers into waitingList. The waiting list also has a limit of 3, which is indicated by WAITINGLIST_LIMIT variable. If both confirmedList and waitingList are full, then the method would return a false indicating that booking has failed. Otherwise, it would return a true, i.e., adding into waitingList is also regarded as successful booking.
+
+Note that among the method parameters, travelClass could be either "business" or "economy" while confirmationNumber is simply a confirmation number of the booking and is an alpha-numeric value, e.g., "C9". You can think that confirmation number is pre-generated as the execution of this method is what confirms the booking process. Rest of the method parameters are obvious from their names. confirmationNumber is the only parameter that is actually used in the exercise (input to cancel()) while others are irrelevant.
+
+(ii) cancel(String confirmationNumber):
+
+The method takes confirmationNumber of the passenger whose flight reservation is to be canceled. The passenger could be in either confirmedList or waitingList and cancellation would entail removing the Passenger from the concerned list. If passenger is in confirmedList, then after removing that passenger, the passenger at the front (head) of waitingList must be moved into confirmedList. Use poll() method (not remove()) to remove the passenger from waitingList.
+
+The actual implementation to remove the passenger from a particular list should go in another method removePassenger(), which takes an Iterator & confirmationNumber as input and returns a boolean  indicating whether the passenger was removed or not. Signature of this  method is also provided in the below code and you would implement the  logic, which helps you put what you learnt about Iterator into action. Note that removing the passenger matching the confirmationNumber has to happen in this removePassenger() and not in cancel() method.

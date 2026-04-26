@@ -1,0 +1,18 @@
+Anonymous Class & Static Member Class Exercise
+Here you are going to put what you learned about anonymous & static member classes into practice. It is a simple re-implementation of TreeSet & Comparator Exercise that you must have already implemented in Collections Framework chapter. To refresh your memory, you implemented comparators: PubDateAscComparator and PubDateDescComparator. PubDateAscComparator sorts books by publication year in ascending order. Similarly, PubDateDescComparator sorts books by publication year in descending order. If two books have same publication year, then those two books will be additionally sorted using their titles in ascending order and this applies to both the comparators, i.e., even PubDateDescComparator will sort the titles in ascending order only. Only if both publication year and titles happen to be same, then the two books would be considered duplicates. Additionally, in that exercise, you also extended the treeSetDemo method.
+
+In this exercise, you will only make changes in the Book class, which is provided to you. Below are the things that you will implement.  
+
+1. Below is TitleComparator. Implement this code as an anonymous class and it should be assigned to a public static final Comparator<Book> TITLE_COMPARATOR in Book class. We know that this would create only a single instance of the anonymous class. 
+
+class TitleComparator implements Comparator<Book> {    
+
+        public int compare(Book o1, Book o2) {
+               return o1.getTitle().compareTo(o2.getTitle());
+        }   
+
+}
+
+2. In Book class, create a public static member class called PubDateComparators. Copy PubDateAscComparator & PubDateDescComparator classes that you implemented in Collections Framework chapter into this static member class. Both PubDateAscComparator and PubDateDescComparator should be static nested classes too. Moreover, they should be generified, i.e., they should extend Comparator<Book> as we have already studied Generics. Within the compare method, when two books have same publication year, we know that those two books should be additionally sorted using their titles in ascending order. For this title-based sorting, use TITLE_COMPARATOR field that you created in point 1 above. Essentially, we are implementing a public helper class here as demonstrated in the Static Member class lecture.
+
+For the sake of convenience I am also providing SetDemo class with the treeSetDemo method fully implemented. So, you don't have to touch this class.

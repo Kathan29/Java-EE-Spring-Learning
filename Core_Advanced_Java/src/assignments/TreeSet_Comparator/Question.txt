@@ -1,0 +1,38 @@
+Earlier in the TreeSet demo, we performed sorting by implementing a Comparator called 'Title Comparator'. In this exercise, you will implement two more comparators: PubDateAscComparator and PubDateDescComparator. PubDateAscComparator sorts books by publication year in ascending order. Similarly, PubDateDescComparator sorts books by publication year in descending order. If two books have same publication year, then those two books will be additionally sorted using their titles in ascending order and this applies to both the comparators, i.e., even PubDateDescComparator will sort the titles in ascending order only. Only if both publication year and titles happen to be same, then the two books would be considered duplicates. 
+
+Use the code provided with this exercise and extend it. Book class has been taken out of SetDemo class for the sake of this exercise as your solution will be automatically verified using a Junit test case and the test case needs access to Book class and hence is separated out. Similarly, PubDateAscComparator and PubDateDescComparator have been provided as separate classes and you need to fill them out.
+
+Other extensions:
+
+- treeSetDemo() method now takes one parameter 'Comparator'. If a null is passed to this method, then natural ordering should be used. But, if a comparator is passed, then the passed comparator should be used for sorting. You need to make this code change in treeSetDemo() in the provided SetDemo class
+
+- Following other changes have been made
+
+    Added new statement: Book book5 = new Book("The Last Lecture", "Randy Pausch", 2008);
+
+   Added new statement: books.add(book5);
+
+   Changed return type of treeSetDemo() to Set<Book> and books variable is returned
+
+You can test your method in this way. In the main method:
+
+if we invoke using treeSetDemo(null); and print returned Set, output will be:
+
+Book [title=Effective Java, author=Joshua Bloch, year=2008]
+Book [title=Harry Potter, author=J.K.Rowling, year=1997]
+Book [title=The Last Lecture, author=Randy Pausch, year=2008]
+Book [title=Walden, author=Henry David Thoreau, year=1854]
+
+if we invoke using treeSetDemo(new PubDateAscComparator()); and print returned Set, output will be:
+
+Book [title=Walden, author=Henry David Thoreau, year=1854]
+Book [title=Harry Potter, author=J.K.Rowling, year=1997]
+Book [title=Effective Java, author=Joshua Bloch, year=2008]
+Book [title=The Last Lecture, author=Randy Pausch, year=2008]
+
+if we invoke using treeSetDemo(new PubDateDescComparator()); and print returned Set, output will be:
+
+Book [title=Effective Java, author=Joshua Bloch, year=2008]
+Book [title=The Last Lecture, author=Randy Pausch, year=2008]
+Book [title=Harry Potter, author=J.K.Rowling, year=1997]
+Book [title=Walden, author=Henry David Thoreau, year=1854]
